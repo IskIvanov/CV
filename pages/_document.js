@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import {AvatarComponent} from '../src/components/avatar'
 
 export default function Document() {
   const meta = {
@@ -23,6 +24,7 @@ export default function Document() {
         <meta name="twitter:image" content={meta.image} />
       </Head>
       <body>
+        <AvatarComponent/>
         <Main />
         <NextScript />
       </body>
