@@ -24,7 +24,6 @@ export default function Document() {
         <meta name="twitter:image" content={meta.image} />
       </Head>
       <body>
-        <AvatarComponent/>
         <Main />
         <NextScript />
       </body>
