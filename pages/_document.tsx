@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import {AvatarComponent} from '../src/components/avatar'
 
 export default function Document() {
   const meta = {
