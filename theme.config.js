@@ -1,4 +1,3 @@
-import {AvatarComponent} from './src/components/avatar';
 const YEAR = new Date().getFullYear()
 
 export default {
@@ -18,6 +17,5 @@ export default {
         }
       `}</style>
     </small>
-  ),
-  darkMode: true
+  )
 }
