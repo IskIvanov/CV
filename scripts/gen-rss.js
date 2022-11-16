@@ -5,9 +5,9 @@ const matter = require('gray-matter')
 
 async function generate() {
   const feed = new RSS({
-    title: 'Your Name',
-    site_url: 'https://yoursite.com',
-    feed_url: 'https://yoursite.com/feed.xml'
+    title: 'Iskren Ivanov',
+    site_url: 'https://iskren.dev',
+    feed_url: 'https://iskren.dev/feed.xml'
   })
 
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }))
