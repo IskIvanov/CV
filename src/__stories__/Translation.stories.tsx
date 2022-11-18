@@ -7,6 +7,6 @@ export default {
   component: TranslationComponent,
 } as ComponentMeta<typeof TranslationComponent>;
 
-const Template: ComponentStory<typeof TranslationComponent> = () => <TranslationComponent />;
+const TemplateTranslationComponent: ComponentStory<typeof TranslationComponent> = () => <TranslationComponent />;
 
-export const DefaultTranslation = Template.bind({});
+export const DefaultTranslationComponent = TemplateTranslationComponent.bind({});
