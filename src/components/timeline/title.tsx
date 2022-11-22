@@ -1,14 +1,12 @@
 import React, { ReactNode } from 'react';
 // Create props interface
 interface TitleProps {
-    id: string;
     children: ReactNode;
 }
 
-function Title({ children, id }) {
+function TitleComponent({ children }: TitleProps) {
    return (
       <h1
-         id={id && id}
          className="text-2xl font-bold underline underline-offset-8 decoration-4 mb-5 text-stone-900 dark:text-white"
       >
          {children}
@@ -16,4 +14,4 @@ function Title({ children, id }) {
    )
 }
 
-export default Title;
+export default TitleComponent;

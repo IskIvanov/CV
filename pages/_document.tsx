@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import TimelineWrapper from '../src/components/timeline'
 
 export default function Document() {
   const meta = {
@@ -24,6 +25,7 @@ export default function Document() {
       </Head>
       <body>
         <Main />
+        <TimelineWrapper/>
         <NextScript />
       </body>
     </Html>
