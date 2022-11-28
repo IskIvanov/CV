@@ -33,6 +33,7 @@ export default function PortfolioRebuild({ Component, pageProps }) {
     return (
       <>
       <MuiThemeProvider theme={MuIdarkTheme}>
+      {/* @ts-ignore */}
       <ThemeProvider attribute="class">
         <Head>
           <link
