@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import timeline from '../../data/timeline';
+import EmailDialog from '../email-dialog';
 import TimelineItem from './timeline-item';
 import TitleComponent from './title';
 
@@ -21,13 +22,7 @@ function TimelineWrapper() {
                details={item.details}
             />
          ))}
-         <button 
-         onClick={handleDownload}
-         className="mt-10 rounded-xl
-          p-4 border border-white
-           bg-gray-500 
-            shadow-lg
-            bg-gray-500/80">Download CV</button>
+         <EmailDialog/>
       </div>
    )
 }

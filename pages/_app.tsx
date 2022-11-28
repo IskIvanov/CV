@@ -1,11 +1,23 @@
 import Head from 'next/head'
+import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { ThemeProvider } from 'next-themes';
 import 'nextra-theme-blog/style.css'
 import '../styles/global.css'
 
+const MuIdarkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#fff',
+    },
+
+  },
+});
+
 export default function Nextra({ Component, pageProps }) {
   return (
     <>
+    <MuiThemeProvider theme={MuIdarkTheme}>
     <ThemeProvider attribute="class">
       <Head>
         <link
@@ -24,6 +36,7 @@ export default function Nextra({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       </ThemeProvider>
+      </MuiThemeProvider>
     </>
   )
 }
