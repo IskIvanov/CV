@@ -6,10 +6,6 @@ import TimelineItem from './timeline-item';
 import TitleComponent from './title';
 
 function TimelineWrapper() {
-   const router = useRouter();
-   const handleDownload = () => {
-      router.push('/static/resume.pdf');
-   };
    return (
       <div className='pt-11'>
          <TitleComponent>Timeline</TitleComponent>
@@ -19,7 +15,9 @@ function TimelineWrapper() {
                year={item.year}
                title={item.title}
                duration={item.duration}
+               location={item.location}
                details={item.details}
+               company={item.company}
             />
          ))}
          <EmailDialog/>
