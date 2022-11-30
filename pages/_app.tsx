@@ -4,6 +4,9 @@ import { ThemeProvider } from 'next-themes';
 import 'nextra-theme-blog/style.css'
 import '../styles/global.css'
 import { useEffect, useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const MuIdarkTheme = createTheme({
 	palette: {
@@ -31,7 +34,7 @@ export default function PortfolioRebuild({ Component, pageProps }) {
 		return <></>;
 	} else {
 		return (
-			<>
+			<QueryClientProvider client={queryClient}>
 				<MuiThemeProvider theme={MuIdarkTheme}>
 					{/* @ts-ignore */}
 					<ThemeProvider attribute="class">
@@ -53,7 +56,7 @@ export default function PortfolioRebuild({ Component, pageProps }) {
 						<Component {...pageProps} />
 					</ThemeProvider>
 				</MuiThemeProvider>
-			</>
+			</QueryClientProvider>
 		)
 	}
 }
