@@ -6,54 +6,54 @@ import '../styles/global.css'
 import { useEffect, useState } from 'react';
 
 const MuIdarkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#fff',
-    },
+	palette: {
+		mode: 'dark',
+		primary: {
+			main: '#fff',
+		},
 
-  },
+	},
 });
 
 export default function PortfolioRebuild({ Component, pageProps }) {
 
-  // Solution to Hydration issue with React 18: https://stackoverflow.com/a/71797054/7992303
-  const [showChild, setShowChild] = useState(false);
+	// Solution to Hydration issue with React 18: https://stackoverflow.com/a/71797054/7992303
+	const [showChild, setShowChild] = useState(false);
 
-  useEffect(() => {
-    setShowChild(true);
-  }, []);
+	useEffect(() => {
+		setShowChild(true);
+	}, []);
 
-  if (!showChild) {
-    return null;
-  }
-  if (typeof window === 'undefined') {
-    return <></>;
-  } else {
-    return (
-      <>
-      <MuiThemeProvider theme={MuIdarkTheme}>
-      {/* @ts-ignore */}
-      <ThemeProvider attribute="class">
-        <Head>
-          <link
-            rel="alternate"
-            type="application/rss+xml"
-            title="RSS"
-            href="/feed.xml"
-          />
-          <link
-            rel="preload"
-            href="/fonts/Inter-roman.latin.var.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-        </Head>
-        <Component {...pageProps} />
-        </ThemeProvider>
-        </MuiThemeProvider>
-      </>
-    )
-  }
+	if (!showChild) {
+		return null;
+	}
+	if (typeof window === 'undefined') {
+		return <></>;
+	} else {
+		return (
+			<>
+				<MuiThemeProvider theme={MuIdarkTheme}>
+					{/* @ts-ignore */}
+					<ThemeProvider attribute="class">
+						<Head>
+							<link
+								rel="alternate"
+								type="application/rss+xml"
+								title="RSS"
+								href="/feed.xml"
+							/>
+							<link
+								rel="preload"
+								href="/fonts/Inter-roman.latin.var.woff2"
+								as="font"
+								type="font/woff2"
+								crossOrigin="anonymous"
+							/>
+						</Head>
+						<Component {...pageProps} />
+					</ThemeProvider>
+				</MuiThemeProvider>
+			</>
+		)
+	}
 }
