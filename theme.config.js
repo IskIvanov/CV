@@ -11,6 +11,7 @@ export default {
       <style jsx>{`
         a {
           float: right;
+          underline: none;
         }
         @media screen and (max-width: 480px) {
           article {
