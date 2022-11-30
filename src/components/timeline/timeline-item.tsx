@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import React from 'react';
 
 type TimelineItemProps = {
@@ -6,15 +5,13 @@ type TimelineItemProps = {
 	title: string;
 	duration: string;
 	details: string;
-	company: string;
+	company?: string;
 	location?: string;
 }
 
 function TimelineItem({ year, title, duration, location, details, company }: TimelineItemProps) {
 
 	// TODO: Change theme color based on company.
-	// const { theme } = useTheme();
-
 	return (
 		<div className="m-0 flex flex-col md:flex-row relative border-l border-stone-200 dark:border-stone-700 list-none" style={{ margin: 0 }}>
 			<li className="mb-10 ml-4 list-none">

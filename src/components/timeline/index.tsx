@@ -16,7 +16,6 @@ function TimelineWrapper() {
 					duration={item.duration}
 					location={item.location}
 					details={item.details}
-					company={item.company}
 				/>
 			))}
 			<EmailDialog />
