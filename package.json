@@ -4,18 +4,31 @@
   "scripts": {
     "dev": "next",
     "build": "node ./scripts/gen-rss.js && next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "@mui/icons-material": "^5.10.15",
+    "@mui/material": "^5.10.15",
+    "@mui/styled-engine-sc": "^5.10.14",
+    "@tanstack/react-query": "^4.18.0",
+    "@tanstack/react-query-devtools": "^4.18.0",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.5",
     "gray-matter": "^4.0.2",
-    "next": "12.0.8",
+    "next": "13.0.5",
     "nextra": "^2.0.0-beta.5",
     "nextra-theme-blog": "^2.0.0-beta.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rss": "^1.2.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rss": "^1.2.2",
+    "storybook": "^6.5.13",
+    "typescript": "4.9.3"
   },
   "prettier": {
     "arrowParens": "always",
@@ -25,10 +38,16 @@
     "semi": false
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.0.5",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
     "autoprefixer": "^10.4.13",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "eslint-config-prettier": "^8.5.0",
     "postcss": "^8.4.19",
+    "prettier": "2.8.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   }
