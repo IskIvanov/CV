@@ -4,7 +4,9 @@ import { ThemeProvider } from 'next-themes';
 import 'nextra-theme-blog/style.css'
 import '../styles/global.css'
 import { useEffect, useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 const queryClient = new QueryClient()
 
@@ -56,6 +58,7 @@ export default function PortfolioRebuild({ Component, pageProps }) {
 						<Component {...pageProps} />
 					</ThemeProvider>
 				</MuiThemeProvider>
+				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
 		)
 	}
