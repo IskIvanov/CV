@@ -29,6 +29,19 @@ export default function Document() {
 					rel="stylesheet"
 					href="https://fonts.googleapis.com/icon?family=Material+Icons"
 				/>
+				<link
+					rel="alternate"
+					type="application/rss+xml"
+					title="RSS"
+					href="/feed.xml"
+				/>
+				<link
+					rel="preload"
+					href="/fonts/Inter-roman.latin.var.woff2"
+					as="font"
+					type="font/woff2"
+					crossOrigin="anonymous"
+				/>
 			</Head>
 			<body>
 				<Main />
