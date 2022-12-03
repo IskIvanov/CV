@@ -6,11 +6,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
-	const SENDGRID_API_KEY = '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'
-	sendgridMail.setApiKey(SENDGRID_API_KEY);
+	sendgridMail.setApiKey(process.env.SENDGRID_API_KEY);
 	// Sendgrid client integration according to the sendgrid docs: https://docs.sendgrid.com/api-reference/contacts/add-or-update-a-contact
 	const client = require('@sendgrid/client');
-	client.setApiKey(SENDGRID_API_KEY);
+	client.setApiKey(process.env.SENDGRID_API_KEY);
 	
 	const data = {
 		contacts: [
