@@ -9,6 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
 
+// TODO: Add email validation
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
 		children: React.ReactElement<any, any>
@@ -81,7 +82,7 @@ export default function EmailDialog() {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>Close</Button>
-					<Button onClick={handleDownload}>Download</Button>
+					<Button onClick={handleDownload}>Send</Button>
 				</DialogActions>
 			</Dialog>
 		</div>
