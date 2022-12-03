@@ -8,8 +8,6 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
-import useSWR from 'swr'
-import { fetcher } from '../utils/fetcher'
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -21,12 +19,19 @@ const Transition = React.forwardRef(function Transition(
 })
 
 export default function EmailDialog() {
-	const [open, setOpen] = useState(false)
-	const { mutate } = useSWR('/api/sendgrid', fetcher, { revalidateOnMount: false })
+	const [open, setOpen] = useState(false);
+	const [email, setEmail] = useState('');
 
 	const handleDownload = () => {
-		// router.push('/static/resume.pdf')
-		mutate('/api/sendgrid')
+		fetch("/api/sendgrid", {
+			body: JSON.stringify({
+				email: email
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+			method: "POST",
+		})
 	}
 
 	const handleClickOpen = () => {
@@ -62,6 +67,9 @@ export default function EmailDialog() {
 						be sent to your email shortly.
 					</DialogContentText>
 					<TextField
+						onChange={(e) => {
+							setEmail(e.target.value)
+						}}
 						autoFocus
 						margin="dense"
 						id="name"
