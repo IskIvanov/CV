@@ -1,9 +1,10 @@
 import sendgrid from "@sendgrid/mail";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-async function sendEmail(req, res) {
+async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
 	// TODO: Find out why process.env.SENDGRID_API_KEY is returns undefined ?
-	sendgrid.setApiKey("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");
-	console.log("Is this undefined->" + "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");
+	sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+	console.log("Is this undefined->" + "");
 		// console.log("REQ.BODY", req.body);
 	await sendgrid.send({
 		to: 'iskren93@gmail.com', // Change to your recipient

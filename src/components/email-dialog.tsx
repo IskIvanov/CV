@@ -8,7 +8,8 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
-import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import { fetcher } from '../utils/fetcher'
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -21,10 +22,11 @@ const Transition = React.forwardRef(function Transition(
 
 export default function EmailDialog() {
 	const [open, setOpen] = useState(false)
-	const router = useRouter()
+	const { mutate } = useSWR('/api/sendgrid', fetcher, { revalidateOnMount: false })
 
 	const handleDownload = () => {
-		router.push('/static/resume.pdf')
+		// router.push('/static/resume.pdf')
+		mutate('/api/sendgrid')
 	}
 
 	const handleClickOpen = () => {
@@ -77,3 +79,4 @@ export default function EmailDialog() {
 		</div>
 	)
 }
+
