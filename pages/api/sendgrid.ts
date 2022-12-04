@@ -1,6 +1,7 @@
 import sendgridMail from "@sendgrid/mail";
 import { NextApiRequest, NextApiResponse } from 'next';
 
+// TODO: Solve development api key issues
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
 
 	const sendgridAPIKey = process.env.NEXT_PUBLIC_SENDGRID_API_KEY;
