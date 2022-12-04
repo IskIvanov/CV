@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { ThemeProvider } from 'next-themes';
 import 'nextra-theme-blog/style.css'
@@ -6,7 +5,6 @@ import '../styles/global.css'
 import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
 
 const queryClient = new QueryClient()
 
