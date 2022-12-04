@@ -1,6 +1,5 @@
 import useSWR from 'swr'
 import zod from 'zod'
-import { useForm } from 'react-hook-form';
 import { useState } from 'react'
 import * as React from 'react'
 import Button from '@mui/material/Button'
@@ -11,9 +10,13 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
+import { useTheme } from '@mui/material/styles';
+import { ThemeProvider } from 'next-themes';
 
 // TODO: Add email form validation
 // TODO: Add translations to the Dialog
+// TODO: Implement form and react-hook-form for better form controls
+// TODO: Abstract most of the logic in custom hooks
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -25,16 +28,15 @@ const Transition = React.forwardRef(function Transition(
 })
 
 const schema = zod.object({
-	email: zod.string().email(),
+	email: zod.string().email({ message: "Please provide a valid email address." }).min(4),
 })
 
 export default function EmailDialog() {
 	const [open, setOpen] = useState(false);
-	const { } = useForm();
 	const [formData, setFormData] = useState({
 		email: '',
 	});
-	const [emailValidationErrors, setEmailValidationErrors] = useState({});
+	const [emailValidationErrors, setEmailValidationErrors] = useState<string>('');
 
 	const { data, error: serverError, mutate } = useSWR('/api/sendgrid', (url, options) => {
 		// Set the options for the POST request
@@ -43,13 +45,18 @@ export default function EmailDialog() {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ email: formData.email }),
 		};
-
+		// Post request only if the email is valid
+		if (formData.email !== '') {
+			return fetch(url, { ...options, ...postOptions }).then((res) => res.json());
+		} else {
+			return null;
+		}
 		// Make the POST request and return the response
-		return fetch(url, { ...options, ...postOptions }).then((res) => res.json());
 	},
 		{
 			// TODO: Prevent the BE call from rendering on initialization
 			fallbackData: false,
+			revalidateOnFocus: false,
 		}
 	);
 
@@ -61,12 +68,12 @@ export default function EmailDialog() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
+			setEmailValidationErrors('');
 			schema.parse(formData);
-			// mutate();
-		} catch (errors) {
-			console.error(errors);
-			debugger;
-			setEmailValidationErrors(errors.issues.message);
+			mutate();
+			setOpen(false);
+		} catch (err) {
+			setEmailValidationErrors(err.issues[0].message);
 		}
 	};
 
@@ -76,17 +83,13 @@ export default function EmailDialog() {
 
 	const handleClose = () => {
 		setOpen(false)
+		setEmailValidationErrors('')
 	}
 
 	return (
-		<div>
-			{/* <form onSubmit={handleSubmit}> */}
+		<div className='mt-8'>
 			<Button
-				className="mt-10 rounded-xl
-					p-4 border border-white
-					bg-gray-500 
-						shadow-lg
-						bg-gray-500/80"
+				variant='outlined'
 				onClick={handleClickOpen}
 			>
 				Download CV
@@ -109,8 +112,8 @@ export default function EmailDialog() {
 						margin="dense"
 						id="name"
 						label="Email Address"
-						// error={!!error.email}
-						// helperText={error.email}
+						error={!!emailValidationErrors}
+						helperText={emailValidationErrors}
 						type="email"
 						fullWidth
 						variant="standard"
@@ -121,7 +124,6 @@ export default function EmailDialog() {
 					<Button onClick={handleSubmit}>Send</Button>
 				</DialogActions>
 			</Dialog>
-			{/* </form> */}
 		</div>
 	)
 }
