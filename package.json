@@ -24,6 +24,7 @@
     "gray-matter": "^4.0.2",
     "mjml": "^4.13.0",
     "next": "13.0.5",
+    "next-env": "^1.1.1",
     "nextra": "^2.0.0-beta.5",
     "nextra-theme-blog": "^2.0.0-beta.5",
     "react": "^18.2.0",
