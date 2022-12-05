@@ -17,8 +17,11 @@ Deployment is done with Vercel.
 To run the code 
 
 Install dependencies
-yarn install
+
+`yarn install`
 
 Run the development server
-yarn dev
+
+`yarn dev`
+
 Open http://localhost:3000 with your browser to see the result.
