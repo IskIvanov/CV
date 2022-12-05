@@ -35,8 +35,6 @@ export default function EmailDialog() {
 		email: '',
 	});
 	const [emailValidationErrors, setEmailValidationErrors] = useState<string>('');
-	console.log("My api key on local env = ->" + process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
-	console.log("Environment = ->" + process.env.NODE_ENV);
 	const { data, error: serverError, mutate } = useSWR('/api/sendgrid', (url, options) => {
 		// Set the options for the POST request
 		const postOptions = {
