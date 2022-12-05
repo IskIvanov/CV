@@ -10,8 +10,6 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
-import { useTheme } from '@mui/material/styles';
-import { ThemeProvider } from 'next-themes';
 
 // TODO: Add email form validation
 // TODO: Add translations to the Dialog
@@ -38,6 +36,7 @@ export default function EmailDialog() {
 	});
 	const [emailValidationErrors, setEmailValidationErrors] = useState<string>('');
 	console.log("My api key on local env = ->" + process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
+	console.log("Environment = ->" + process.env.NODE_ENV);
 	const { data, error: serverError, mutate } = useSWR('/api/sendgrid', (url, options) => {
 		// Set the options for the POST request
 		const postOptions = {
