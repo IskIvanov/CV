@@ -1,0 +1,45 @@
+<mjml>
+  <mj-body background-color="#f8f8fc">
+    <mj-section padding-top="0px" padding-bottom="0px">
+      <mj-column padding-top="0px" padding-bottom="0px">
+        <mj-spacer height="40px" />
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0px" padding-bottom="0px" background-color="#ffffff" border-left="solid 1px #e9e9f1" border-right="solid 1px #e9e9f1" border-top="solid 1px #e9e9f1">
+      <mj-column padding-top="0px" padding-bottom="0px">
+        <mj-text font-family="Helvetica" font-size="20px" font-weight="bold" color="#000000" align="center" padding-top="50px">
+          {{#if first_name}}
+            Hi {{first_name}}!
+          {{else}}
+            Hello!
+          {{/if}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0px" padding-bottom="0px" background-color="#ffffff" border-left="solid 1px #e9e9f1" border-right="solid 1px #e9e9f1">
+      <mj-column padding-bottom="0px" padding-top="0px">
+        <mj-text line-height="26px" font-family="Helvetica" font-size="17px" color="#000000" align="center">
+          Thank you for requesting my CV. <br> Please find the downloadable link below:
+         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="6px" background-color="#ffffff" border-left="solid 1px #e9e9f1" border-right="solid 1px #e9e9f1" border-bottom="solid 1px #e9e9f1">
+      <mj-column>
+        <mj-social font-weight="bold" font-family="Helvetica" font-size="20px" icon-size="40px" mode="horizontal" align="center" padding-left="20px" padding-bottom="30px">
+          <mj-social-element src="https://iskren.dev/images/cv.png" name="cta" padding="0 10px 0 0" href="https://iskren.dev/static/resume.pdf">
+		  	Download CV
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0px">
+      <mj-column padding-top="0px">
+        <mj-text>
+          <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" style="color:#0A3752; font-size:12px; line-height:20px; padding:0px 0px 16px 0px; text-align:center;">
+            <p style="font-family:verdana,geneva,sans-serif; font-size:12px; line-height:20px;"><a class="Unsubscribe--unsubscribeLink" href="{{{unsubscribe}}}" target="_blank" style="color:#000000;">Unsubscribe</a></p>
+          </div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

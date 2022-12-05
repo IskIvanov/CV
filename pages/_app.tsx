@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { ThemeProvider } from 'next-themes';
 import 'nextra-theme-blog/style.css'
@@ -6,7 +5,6 @@ import '../styles/global.css'
 import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
 
 const queryClient = new QueryClient()
 
@@ -40,21 +38,6 @@ export default function PortfolioRebuild({ Component, pageProps }) {
 				<MuiThemeProvider theme={MuIdarkTheme}>
 					{/* @ts-ignore */}
 					<ThemeProvider attribute="class">
-						<Head>
-							<link
-								rel="alternate"
-								type="application/rss+xml"
-								title="RSS"
-								href="/feed.xml"
-							/>
-							<link
-								rel="preload"
-								href="/fonts/Inter-roman.latin.var.woff2"
-								as="font"
-								type="font/woff2"
-								crossOrigin="anonymous"
-							/>
-						</Head>
 						<Component {...pageProps} />
 					</ThemeProvider>
 				</MuiThemeProvider>

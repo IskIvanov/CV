@@ -1,3 +1,5 @@
+import useSWR from 'swr'
+import zod from 'zod'
 import { useState } from 'react'
 import * as React from 'react'
 import Button from '@mui/material/Button'
@@ -8,7 +10,11 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
-import { useRouter } from 'next/router'
+
+// TODO: Add email form validation
+// TODO: Add translations to the Dialog
+// TODO: Implement form and react-hook-form for better form controls
+// TODO: Abstract most of the logic in custom hooks
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -19,13 +25,54 @@ const Transition = React.forwardRef(function Transition(
 	return <Slide direction="down" ref={ref} {...props} />
 })
 
-export default function EmailDialog() {
-	const [open, setOpen] = useState(false)
-	const router = useRouter()
+const schema = zod.object({
+	email: zod.string().email({ message: "Please provide a valid email address." }).min(4),
+})
 
-	const handleDownload = () => {
-		router.push('/static/resume.pdf')
-	}
+export default function EmailDialog() {
+	const [open, setOpen] = useState(false);
+	const [formData, setFormData] = useState({
+		email: '',
+	});
+	const [emailValidationErrors, setEmailValidationErrors] = useState<string>('');
+	const { data, error: serverError, mutate } = useSWR('/api/sendgrid', (url, options) => {
+		// Set the options for the POST request
+		const postOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ email: formData.email }),
+		};
+		// Post request only if the email is valid
+		if (formData.email !== '') {
+			return fetch(url, { ...options, ...postOptions }).then((res) => res.json());
+		} else {
+			return null;
+		}
+		// Make the POST request and return the response
+	},
+		{
+			// TODO: Prevent the BE call from rendering on initialization
+			fallbackData: false,
+			revalidateOnFocus: false,
+		}
+	);
+
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setFormData({ email: event.target.value });
+	};
+	// TODO: Set data after mutation is called
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		try {
+			setEmailValidationErrors('');
+			schema.parse(formData);
+			mutate();
+			setOpen(false);
+		} catch (err) {
+			setEmailValidationErrors(err.issues[0].message);
+		}
+	};
 
 	const handleClickOpen = () => {
 		setOpen(true)
@@ -33,16 +80,13 @@ export default function EmailDialog() {
 
 	const handleClose = () => {
 		setOpen(false)
+		setEmailValidationErrors('')
 	}
 
 	return (
-		<div>
+		<div className='mt-8'>
 			<Button
-				className="mt-10 rounded-xl
-          p-4 border border-white
-           bg-gray-500 
-            shadow-lg
-            bg-gray-500/80"
+				variant='outlined'
 				onClick={handleClickOpen}
 			>
 				Download CV
@@ -56,14 +100,17 @@ export default function EmailDialog() {
 			>
 				<DialogContent>
 					<DialogContentText>
-						To download my CV, please enter your email address here, the CV will
+						To download my CV, please enter your name and email address below, the CV will
 						be sent to your email shortly.
 					</DialogContentText>
 					<TextField
+						onChange={handleChange}
 						autoFocus
 						margin="dense"
 						id="name"
 						label="Email Address"
+						error={!!emailValidationErrors}
+						helperText={emailValidationErrors}
 						type="email"
 						fullWidth
 						variant="standard"
@@ -71,7 +118,7 @@ export default function EmailDialog() {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>Close</Button>
-					<Button onClick={handleDownload}>Download</Button>
+					<Button onClick={handleSubmit}>Send</Button>
 				</DialogActions>
 			</Dialog>
 		</div>
