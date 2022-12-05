@@ -1,32 +1,10 @@
 import sendgridMail from "@sendgrid/mail";
 import { NextApiRequest, NextApiResponse } from 'next';
 
-// TODO: Solve development api key issues
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
 
 	const sendgridAPIKey = process.env.NEXT_PUBLIC_SENDGRID_API_KEY;
 	sendgridMail.setApiKey(sendgridAPIKey);
-	// TODO: Finish implementation.
-	// Sendgrid client integration according to the sendgrid docs: https://docs.sendgrid.com/api-reference/contacts/add-or-update-a-contact
-	// const client = require('@sendgrid/client');
-	// // client.setApiKey(sendgridAPIKey);
-	
-	// // const data = {
-	// // 	contacts: [
-	// // 		{
-	// // 			first_name: "Iskren",
-	// // 			last_name: "Ivanov",
-	// // 		}
-	// // 	]
-	// // };
-
-	// const request = {
-	// 	url: `/v3/marketing/contacts`,
-	// 	method: 'PUT',
-	// 	body: data
-	// }
-		
-	// Setting up the email message sender
 	await sendgridMail.send({
 		to: req.body.email, 
 		from: 'iskren.dev@gmail.com', 
@@ -315,15 +293,6 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
 		console.error(error)
 		res.status(500).json({ message: error });
 	});
-
-	// client.request(request)
-	// .then(([response]) => {
-	// 	console.log(response.statusCode);
-	// 	console.log(response.body);
-	// })
-	// .catch(error => {
-	// 	console.error(error);
-	// });
 }
 
 export default sendEmail;
