@@ -6,8 +6,15 @@ module.exports = {
     "./pages/**/*.{html,css,js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {},
+	theme: {
+		extend: {
+		  colors: {
+		  'background': '#36424C',
+		  'orange': '#D2BFA8',
+		  'grey': '#B5B8BA',
+		  'grey-timeline': '#B5B8BB'
+		}
+	  },
   },
   plugins: [],
 }

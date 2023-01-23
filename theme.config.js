@@ -1,5 +1,6 @@
 const YEAR = new Date().getFullYear()
 
+/* eslint-disable */
 export default {
   footer: (
     <small style={{ display: 'block', marginTop: '8rem' }}>
@@ -22,7 +23,7 @@ export default {
       `}</style>
     </small>
   ),
-  darkMode: true,
+	darkMode: false,
   i18n: [
     { locale: 'en', text: 'English' },
     { locale: 'nl', text: 'Dutch' },
