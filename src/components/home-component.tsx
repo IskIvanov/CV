@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Header } from "./header"
 import TimelineComponent from "./timeline-component"
+import ButtonsComponent from "./buttons-component"
 
 export const HomeComponent = () => {
 	return (
@@ -24,16 +25,7 @@ export const HomeComponent = () => {
 				</div>
 			</div>
 			<TimelineComponent />
-			{/* Buttons component */}
-			<div className="flex flex-col items-center">
-				<div className="flex flex-col  space-y-5 item bg-slate-400 w-72 pt-2">
-					<button>About Me</button>
-					<button>Read my blog</button>
-					<button>Request my CV</button>
-					<button>Get in touch!</button>
-				</div>
-			</div>
-			{/* -------------------------------- */}
+			<ButtonsComponent />
 		</div>
 	)
 }
