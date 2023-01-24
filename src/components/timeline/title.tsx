@@ -5,11 +5,11 @@ interface TitleProps {
 
 function TitleComponent({ children }: TitleProps) {
 	return (
-		<h1
-			className="text-sm font-bold decoration-4 mb-5 text-stone-900 dark:text-white"
+		<div
+			className="text-sm p-4 rounded-lg bg-[#B5B8BB] font-bold decoration-4 mb-5 text-stone-900 dark:text-white"
 		>
 			{children}
-		</h1>
+		</div>
 	)
 }
 
