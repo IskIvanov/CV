@@ -2,6 +2,7 @@ import TitleComponent from "./timeline/title"
 import timeline from "../data/timeline"
 import TimelineItem from "./timeline/timeline-item"
 
+// TODO: Refactor this component to meet design requirements
 export const TimelineComponent = () => {
 	return (
 		<div className=" pt-32 relative" >

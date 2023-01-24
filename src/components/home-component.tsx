@@ -4,6 +4,9 @@ import TimelineComponent from "./timeline-component"
 import ButtonComponent from './buttons-component';
 import EmailDialog from './email-dialog';
 
+// TODO: Implement a router to redirect to different pages of the app
+// TODO: Develop a footer component
+
 export const HomeComponent = () => {
 	return (
 		<div className="flax flex-col max-w-3xl">
@@ -28,8 +31,8 @@ export const HomeComponent = () => {
 			</div>
 			<TimelineComponent />
 			<div className="flex flex-col space-y-8">
-				<ButtonComponent imageAlt="About Me" imageSrc="/images/about_me.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="About Me" />
 				<ButtonComponent imageAlt="Read my blog" imageSrc="/images/request_cv.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Read my blog" />
+				<ButtonComponent imageAlt="About Me" imageSrc="/images/about_me.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="About Me" />
 				<ButtonComponent imageAlt="Request my CV" imageSrc="/images/get_in_touch.png" imageHeight={300} imageWidth={300} textWidth="w-48" buttonText="Request my CV" />
 				<EmailDialog />
 			</div>
