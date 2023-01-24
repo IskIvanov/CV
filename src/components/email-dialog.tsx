@@ -89,7 +89,7 @@ export default function EmailDialog() {
 			<Button
 				onClick={handleClickOpen}
 			>
-				<ButtonComponent imageAlt="Get in touch" imageSrc="/images/read_my_blog.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Get in touch!" />
+				<ButtonComponent imageAlt="Request my CV" imageSrc="/images/get_in_touch.png" imageHeight={300} imageWidth={300} textWidth="w-48" buttonText="Request my CV" />
 			</Button>
 			<Dialog
 				open={open}

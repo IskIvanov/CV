@@ -3,6 +3,7 @@ import { Header } from "./header"
 import TimelineComponent from "./timeline-component"
 import ButtonComponent from './buttons-component';
 import EmailDialog from './email-dialog';
+import Link from 'next/link';
 
 // TODO: Implement a router to redirect to different pages of the app
 // TODO: Develop a footer component
@@ -12,6 +13,7 @@ export const HomeComponent = () => {
 		<div className="flax flex-col max-w-3xl">
 			<Header />
 			{/* TODO: Add alignement */}
+			{/* TODO: Abstract component and used in Home, About and Contact Me pages.  */}
 			<div className="flex flex-col items-center h-44 pt-6 bg-[#EEEEEE] rounded-xl text-[#2A383D] font-semibold mt-12">
 				<p className=" text-xl font-extrabold">A Software Engineer based in Amsterdam</p>
 				<p className="m-5 ">
@@ -21,7 +23,7 @@ export const HomeComponent = () => {
 				</p>
 			</div>
 			{/* Center this div with tailwind css */}
-			{/* TODO: Build responsive */}
+			{/* TODO: Build responsive and move to a separate component. */}
 			<div className="relative left-20 top-3 max-w-xl">
 				<div className="flex flex-row flex-wrap justify-center space-x-10 h-10 border-2 border-[#293032] absolute bottom-0 rounded-xl bg-[#D2BFA8] w-full items-center">
 					<Image alt="bol.com" src="/images/bol.svg" width={75} height={75} />
@@ -31,10 +33,16 @@ export const HomeComponent = () => {
 			</div>
 			<TimelineComponent />
 			<div className="flex flex-col space-y-8">
-				<ButtonComponent imageAlt="Read my blog" imageSrc="/images/request_cv.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Read my blog" />
-				<ButtonComponent imageAlt="About Me" imageSrc="/images/about_me.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="About Me" />
-				<ButtonComponent imageAlt="Request my CV" imageSrc="/images/get_in_touch.png" imageHeight={300} imageWidth={300} textWidth="w-48" buttonText="Request my CV" />
+				<Link href="/blog">
+					<ButtonComponent imageAlt="Read my blog" imageSrc="/images/request_cv.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Read my blog" />
+				</Link>
+				<Link href="/about">
+					<ButtonComponent imageAlt="About Me" imageSrc="/images/about_me.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="About Me" />
+				</Link>
 				<EmailDialog />
+				<Link href="/contact">
+					<ButtonComponent imageAlt="Get in touch" imageSrc="/images/read_my_blog.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Get in touch!" />
+				</Link>
 			</div>
 		</div>
 	)
