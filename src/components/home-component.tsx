@@ -1,7 +1,8 @@
 import Image from "next/image"
 import { Header } from "./header"
 import TimelineComponent from "./timeline-component"
-import ButtonsComponent from "./buttons-component"
+import ButtonComponent from './buttons-component';
+import EmailDialog from './email-dialog';
 
 export const HomeComponent = () => {
 	return (
@@ -26,7 +27,12 @@ export const HomeComponent = () => {
 				</div>
 			</div>
 			<TimelineComponent />
-			<ButtonsComponent />
+			<div className="flex flex-col space-y-8">
+				<ButtonComponent imageAlt="About Me" imageSrc="/images/about_me.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="About Me" />
+				<ButtonComponent imageAlt="Read my blog" imageSrc="/images/request_cv.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Read my blog" />
+				<ButtonComponent imageAlt="Request my CV" imageSrc="/images/get_in_touch.png" imageHeight={300} imageWidth={300} textWidth="w-48" buttonText="Request my CV" />
+				<EmailDialog />
+			</div>
 		</div>
 	)
 }

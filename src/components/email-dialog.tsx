@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import Slide from '@mui/material/Slide'
 import { TransitionProps } from '@mui/material/transitions'
+import ButtonComponent from './buttons-component'
 
 // TODO: Add email form validation
 // TODO: Add translations to the Dialog
@@ -84,12 +85,11 @@ export default function EmailDialog() {
 	}
 
 	return (
-		<div className='mt-8'>
+		<div className="flex flex-col items-center">
 			<Button
-				variant='outlined'
 				onClick={handleClickOpen}
 			>
-				Download CV
+				<ButtonComponent imageAlt="Get in touch" imageSrc="/images/read_my_blog.png" imageHeight={150} imageWidth={150} textWidth="w-48" buttonText="Get in touch!" />
 			</Button>
 			<Dialog
 				open={open}
